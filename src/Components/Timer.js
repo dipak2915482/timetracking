@@ -1,42 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import Datetime from './Datetime';
+import TimeDisplay from './TimeDisplay'; // Import the TimeDisplay component
 
 const Timer = ({ onSave }) => {
-  const [isRunning, setIsRunning] = useState(false);
-  const [elapsedTime, setElapsedTime] = useState(0);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
-    let timer;
-    if (isRunning) {
-      timer = setInterval(() => {
-        setElapsedTime(prevElapsedTime => prevElapsedTime + 1000);
-      }, 1000);
-    } else {
-      clearInterval(timer);
-    }
-    return () => clearInterval(timer);
-  }, [isRunning]);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [intervalId]);
 
   const handleStart = () => {
     setIsRunning(true);
+    const id = setInterval(() => {
+      setElapsedTime((prevElapsedTime) => prevElapsedTime + 1000);
+    }, 1000);
+    setIntervalId(id);
   };
 
   const handlePause = () => {
     setIsRunning(false);
+    clearInterval(intervalId);
   };
 
   const handleSave = () => {
-    onSave(title, description, elapsedTime);
-    setTitle('');
-    setDescription('');
-    setElapsedTime(0);
+    if (title && description) {
+      onSave(title, description, elapsedTime);
+      setTitle('');
+      setDescription('');
+      setElapsedTime(0);
+      setIsRunning(false);
+      clearInterval(intervalId);
+    } else {
+      alert('Please enter both title and description');
+    }
   };
 
   return (
     <div className="timer">
-      <Datetime elapsedTime={elapsedTime} />
+      <TimeDisplay elapsedTime={elapsedTime} />
       <button
         type="button"
         className="btn"
@@ -82,4 +88,3 @@ const Timer = ({ onSave }) => {
 };
 
 export default Timer;
-

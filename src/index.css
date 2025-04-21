@@ -1,13 +1,160 @@
+/* General styles */
 body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+h1 {
+  text-align: center;
+  color: #4caf50;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  letter-spacing: 1.5px;
+}
+
+.timer {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.datetime {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  background-color: #e0f7fa;
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.datetime:hover {
+  transform: scale(1.05);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #4caf50;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 10px 5px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-start {
+  background-color: #4caf50;
+}
+
+.btn-pause {
+  background-color: #ff9800;
+}
+
+.btn-save {
+  background-color: #2196f3;
+}
+
+/* Task List */
+.task-list {
+  margin-top: 40px;
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.task:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.task h4 {
+  color: #4caf50;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.task p {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.task p:last-child {
+  font-weight: bold;
+  color: #333;
+}
+
+.task button {
+  background-color: #e91e63;
+  margin-right: 10px;
+}
+
+.task button:nth-child(2) {
+  background-color: #00bcd4;
+}
+
+.task button:hover {
+  background-color: #d81b60;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .app {
+    padding: 20px;
+  }
+
+  .datetime {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }
